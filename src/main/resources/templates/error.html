@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es-AR" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/extras/spring-security">
+     <head th:replace="/fragments/head :: head"></head>
+     <body style="position:relative; padding-bottom: 10em; min-height:100vh; ">        
+        <nav th:replace="/fragments/navbar :: nav"></nav>
+        <header>
+            <title>Error</title>
+        </header>
+        <section>
+        <div class="row featurette" style="margin-top: 9%;">
+      		<div class="col-md-7">
+      			<h1 style="text-align: center; margin: 10px; font-size: 100px">Error</h1>
+            	<h1 th:text="${codigo}" style="text-align: center; margin: 10px; font-size: 80px"></h1>
+                <h2 th:text="${mensaje == null ? 'Intenta nuevamente' : mensaje}"  style="text-align: center; margin: 80px;"></h2>
+      		</div>
+	      	<div class="col-md-5" >
+	        	<img src="/img/busqueda-libro-2.jpg"  style="width: 85%; margin-left: 20px">
+	        </div>
+   		</div>
+        </section>
+		<footer th:replace="/fragments/footer :: footer"></footer>
+    </body>
+</html>

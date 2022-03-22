@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es-AR" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/extras/spring-security">
+    <head th:replace="/fragments/head :: head"></head>
+    <body style="position:relative; padding-bottom: 10em; min-height:100vh"> 
+		<nav th:replace="/fragments/navbar :: nav"></nav>
+		<main>
+		
+  		<div class="container marketing" style="margin-bottom: 300px; margin:auto">
+  		
+		<label  style="margin: 6%"></label>
+				
+	    	<div class="row featurette">
+	      		<div class="col-md-7">
+	        		<h1 class="featurette-heading" style="text-align: center; font-size: 600%;"><span class="text-muted"></span>Interlibros</h1>
+	        		<br>
+	        		<h2 style="font-size: 250%;">Comparti tus libros y participa en la construccion colectiva de la biblioteca.</h2>
+	        		<p class="lead"></p>
+	        		<label  style="margin-top: 45%; margin-right: 20px"></label>
+	        			<div th:if="${session.usuariosession == null}">
+	        				<p class="w-100 btn btn-lg btn-primary" type="submit" style=" background-color: #b8884e; border-color: #986931; max-width: 350px;"><a style=" text-decoration: none; color: white" href="/login">Iniciar Sesión</a></p>
+				    		<span style="margin: 1%;"></span>
+				    		<p class="w-100 btn btn-lg btn-primary" type="submit" style=" background-color: #b8884e; border-color: #986931; max-width: 350px;"><a style=" text-decoration: none; color: white" href="/registro">Registrarse</a></p>
+	        			</div>
+	      		</div>
+	      	<div class="col-md-5">
+	        	<img src="img/libreria-1.jpg" style="width: 130%;">
+	      	</div>
+    	</div>
+
+		<label  style="margin-top: 6%; margin-right: 20px"></label>
+		<hr class="featurette-divider">
+		<label  style="margin-top: 6%; margin-right: 20px"></label>
+
+    	<div class="row featurette">
+      		<div class="col-md-7 order-md-2">
+        		<h1 class="featurette-heading" style="text-align: center; font-size: 500%;"><span class="text-muted"></span>Solicita</h1><br><h2 style="font-size: 250%; text-align:right">Navega por la biblioteca de otros usuarios, recorre los titulos que tienen disponibles para compartir y elegi que libro solicitarle.</h2>
+       			<p class="lead"></p>
+      		</div>
+      	<div class="col-md-5 order-md-1">
+        <img src="img/libros-laptop.jpg"  style="width: 95%; margin-left: 20px">
+
+      </div>
+    </div>
+
+		<label  style="margin-top: 6%; margin-right: 20px"></label>
+		<hr class="featurette-divider">
+		<label  style="margin-top: 6%; margin-right: 20px"></label>
+
+    <div class="row featurette">
+      <div class="col-md-7">
+        <h1 class="featurette-heading" style="text-align: center; font-size: 500%;"><span class="text-muted">Acepta</span></h1><br><h2 style="font-size: 250%;">Recibi solicitudes de prestamos hechas por otros usuarios, revisa sus bibliotecas y acepta el prestamo.</h2>
+        <p class="lead"></p>
+      </div>
+      <div class="col-md-5">
+        <img src="img/libro-buscar.jpg"></svg>
+      </div>
+    </div>
+
+		<label  style="margin-top: 6%; margin-right: 20px"></label>
+		<hr class="featurette-divider">
+		<label  style="margin-top: 6%; margin-right: 20px"></label>
+
+    <div class="row featurette">
+      <div class="col-md-7 order-md-2">
+        <h1 class="featurette-heading" style="text-align: center; font-size: 500%;"><span class="text-muted">Intercambia</span></h1><br><h2 style="font-size: 250%; text-align:right">Acorda el lugar y duracion del intercambio.</h2>
+        <p class="lead"></p>
+      </div>
+      <div class="col-md-5 order-md-1">
+        <img src="img/intercambio-libros-2.jpg" style="width: 95%; margin-left: -20px">
+      </div>
+    </div>
+    
+		<label  style="margin-top: 10%; margin-right: 20px"></label>
+  </div>
+
+
+</main>
+        <footer th:replace="/fragments/footer :: footer"></footer>
+    </body>
+</html>

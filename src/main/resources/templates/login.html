@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es-AR" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/extras/spring-security">
+    <head th:replace="/fragments/head :: head"></head>
+    <body class="text-center" style="position:relative; padding-bottom: 10em; min-height:100vh">
+        <nav th:replace="/fragments/navbar :: nav"></nav>    
+        	<div class="container" id="container-form" style="max-width: 370px; margin-top: 70px"> 
+				<main class="form-signin" style="padding: 30px; border-color: #d6b575; border-style: solid; border-radius: 30px;">
+					<form action="/logincheck" method="POST" enctype="multipart/form-data" >
+		
+    					<img class="mb-3" src="img/libro-icono.png" alt="libro" width="102" height="97">
+    					<h1 class="h3 mb-3 fw-normal">Iniciar Sesión</h1>
+    					<p th:if="${error != null}" th:text="${error}" style="color:red"></p>
+						<p th:if="${logout != null}" th:text="${logout}" style="color:green"></p>
+						<label class="form-label"></label>
+						<div class="form-floating">
+				      		<input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="username">
+				      		<label for="floatingInput">Email</label>
+				    	</div>
+    					<label class="form-label"></label>
+				    	<div class="form-floating">
+				      		<input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">
+				      		<label for="floatingPassword">Contraseña</label>
+				    	</div>
+				    	
+				    	<div class="checkbox mb-3 mt-3" style="text-align: left; margin-left: 13px;">
+				      		<label>
+				        		<input type="checkbox" value="remember-me"> Recordarme
+				     		 </label>
+				    	</div>
+
+				    	<button class="w-100 btn btn-lg btn-primary" type="submit" style="background-color: #b8884e; border-color: #986931; max-width: 350px;">Iniciar sesión</button>
+				    	<label class="form-label"></label>
+				    	<p class="w-100 btn btn-lg btn-primary" type="submit" style=" background-color: #b8884e; border-color: #986931; max-width: 350px;"><a style=" text-decoration: none; color: white" href="/registro">Registrarse</a></p>
+  					</form>
+  					
+
+				   	<p style="margin: 10px;">¿Olvidaste tu contraseña?</p>
+  					
+				</main>
+        	</div>
+        <footer th:replace="/fragments/footer :: footer"></footer>
+    </body>
+</html>
+
+
+<!--
+        <section>            
+			  <form action="/logincheck" method="POST">
+			  	<p th:if="${error != null}" th:text="${error}" style="color:red"></p>
+			  	<p th:if="${logout != null}" th:text="${logout}" style="color:green"></p>
+			      <label>Email</label>
+			      <input type="email" placeholder="email@example.com" name="username"><br>   
+			      <label>Contraseña</label>
+			      <input type="password" placeholder="Password" name="password">			    
+			    <button type="submit">Iniciar sesión</button>
+			  </form>
+        </section>
+        
+         <p style="text-align: center; margin-top:30px"><a th:href= "@{../../../intercambio/intercambio-solicitar(idLibro2=__${libro.id}__)}" style="text-decoration: none;
+			        	padding: 4px; border-radius: 0.5em; padding-left: 13px; padding-right:13px; background-color: #35978f; border-color: #01665e;
+			        	max-width: 350px; color: white;">Solicitar</a>
+			        </p>
+ -->

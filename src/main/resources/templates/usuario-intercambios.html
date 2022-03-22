@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es-AR" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/extras/spring-security">   
+    <head th:replace="/fragments/head :: head"></head>
+    <body style="position:relative; padding-bottom: 10em; min-height:100vh">  
+        <nav th:replace="/fragments/navbar :: nav"></nav>
+        <header>
+            <h1 style="text-align: center; margin: 80px; font-size: 80px">Intercambios</h1>
+        </header>
+        <section style= "margin-left: 8%; margin-right: 8%;">    
+        	<h2 style="text-align: center;">Solicitudes enviadas</h2> 
+        	<label></label>
+        	<table class="table table-striped" style="text-align: center;">
+        		<thead>
+        			<tr>
+        		    	<!--<th>Id</th>-->
+        		    	<th>Libro solicitado</th>
+        		    	<th>Usuario a quien solicitas</th>
+        		    	<th>Contacto</th>
+        		    	<th>Libro propio entregado</th>
+        		    	<!--<th>Fecha Inicio</th>
+        		    	<th>Fecha Finalización</th>-->
+        		    	<th>Estado</th>
+        		    	<th>Acción</th>
+        			</tr>
+        		</thead>
+				<tbody th:each="intercambio : ${intercambiosEnviados}" >
+					<tr>
+						<!--<td th:text="${intercambio.id}"></td>-->
+						<td th:text="${intercambio.libro2.titulo}"></td>
+						<td th:text="${intercambio.usuario2.nombre}"></td>
+						<td>
+							<span th:if="${intercambio.libro1 == null}" th:text="${' - '}"></span>
+							<span th:if="${intercambio.libro1 != null}" th:text="${intercambio.usuario2.mail}"></span>
+						</td>
+						<td>
+							<span th:if="${intercambio.libro1 == null}" th:text="${' - '}"></span>
+							<span th:if="${intercambio.libro1 != null}" th:text="${intercambio.libro1.titulo}"></span>
+						</td>
+						<!--<td>
+							<span th:if="${intercambio.alta == null}" th:text="${' - '}"></span>
+							<span th:unless="${intercambio.alta != null}" th:text="${intercambio.altaString}"></span>
+						</td>
+						<td>
+							<span th:if="${intercambio.baja == null}" th:text="${' - '}"></span>
+							<span th:unless="${intercambio.baja != null}" th:text="${intercambio.bajaString}"></span>
+						</td>-->
+						<td>
+							<span th:if="${!intercambio.aceptado}" th:text="${'Pendiente'}"></span>
+							<span th:unless="${!intercambio.aceptado}" th:text="${'Aceptado'}"></span>
+						</td>
+						<td><a href="#">Responder</a>    <a th:href="@{../../../intercambio/intercambio-finalizar(idIntercambio=__${intercambio.id}__)}">Cancelar</a></td>
+					</tr>
+				</tbody>
+        	</table>
+        	
+        	<label style="margin-top: 1%; margin-bottom: 1%;"></label>
+        	<hr>
+        	<label style="margin-top: 1%; margin-bottom: 1%;"></label>
+        	
+        	<h2 style="text-align: center;">Solicitudes recibidas</h2> 
+        	<label></label>
+        	<table class="table table-striped" style="text-align: center;">
+        		<thead>
+        			<tr>	
+        		    	<!--<th>Id</th>-->
+        		    	<th>Libro que solicitas</th>
+        		    	<th>Usuario que te solicita</th>
+        		    	<th>Contacto</th>
+        		    	<th>Libro que te piden</th>
+        		    	<!--<th>Fecha Inicio</th>
+        		    	<th>Fecha Finalización</th>-->
+        		    	<th>Estado</th>
+        		    	<th>Acción</th>
+        			</tr>
+        		</thead>
+				<tbody th:each="intercambio : ${intercambiosRecibidos}">
+					<tr>
+						<!--<td th:text="${intercambio.id}"></td>-->
+						<td>
+							<span th:if="${intercambio.libro1 == null}" th:text="${' - '}"></span>
+							<span th:if="${intercambio.libro1 != null}" th:text="${intercambio.libro1.titulo}"></span>
+						</td>
+						<td th:text="${intercambio.usuario1.nombre}"></td>
+						<td>
+							<span th:if="${intercambio.libro1 == null}" th:text="${' - '}"></span>
+							<span th:if="${intercambio.libro1 != null}" th:text="${intercambio.usuario1.mail}"></span>
+						</td>						
+						<td th:text="${intercambio.libro2.titulo}"></td>
+						<!--<td>
+							<span th:if="${intercambio.alta == null}" th:text="${' - '}"></span>
+							<span th:unless="${intercambio.alta != null}" th:text="${intercambio.altaString}">
+						</td>
+						<td>
+							<span th:if="${intercambio.baja == null}" th:text="${' - '}"></span>
+							<span th:unless="${intercambio.baja != null}" th:text="${intercambio.bajaString}"></span>
+						</td>-->
+						<td>
+							<span th:if="${!intercambio.aceptado}" th:text="${'Pendiente'}"></span>
+							<span th:unless="${!intercambio.aceptado}" th:text="${'Aceptado'}"></span>
+						</td>
+						<td><a th:href="@{../../../usuario/usuario-libros-intercambio(idIntercambio=__${intercambio.id}__)}">Responder</a>   <a th:href="@{../../../intercambio/intercambio-finalizar(idIntercambio=__${intercambio.id}__)}">Cancelar</a></td>
+					</tr>
+				</tbody>
+        	</table>
+        	
+        </section>
+        <footer th:replace="/fragments/footer :: footer"></footer>
+    </body>
+</html> 

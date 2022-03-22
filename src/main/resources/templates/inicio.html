@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es-AR" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/extras/spring-security">
+	<head th:replace="/fragments/head :: head"></head>
+    <body style="position:relative; padding-bottom: 10em; min-height:100vh">        
+        <nav th:replace="/fragments/navbar :: nav"></nav>
+        <header>
+            <h1 th:if="${session.usuariosession != null}" th:text="${session.usuariosession.nombre + ' ' + session.usuariosession.apellido}" style="text-align: center; margin: 80px; font-size: 80px"></h1>            
+        </header>
+        <section>
+           <div class="row row-cols-1 row-cols-md-3 g-4" Style="margin-left: 150px; margin-right: 150px; text-align: center; font-size: 50px;">
+			  <div class="col">
+			    <div class="card">
+			      <img src="..." class="card-img-top" alt="...">
+			      <div class="card-body">
+			        <h5> <a style="text-decoration: none; color: black" class="card-title" aria-current="page" th:href="@{/usuario/usuario-edicion(id=__${session.usuariosession.id}__)}" th:if="${session.usuariosession != null}">Perfil</a></h5>
+			        </div>
+			    </div>
+			  </div>
+			  <div class="col">
+			    <div class="card">
+			      <img src="..." class="card-img-top" alt="...">
+			      <div class="card-body">
+			        <h5><a style="text-decoration: none; color: black" class="card-title" aria-current="page" href="/usuario/usuario-libros" th:if="${session.usuariosession != null}" >Biblioteca</a></h5>
+			        </div>
+			    </div>
+			  </div>
+			  <div class="col">
+			    <div class="card">
+			      <img src="..." class="card-img-top" alt="...">
+			      <div class="card-body">
+			        <h5><a style="text-decoration: none; color: black" class="card-title" aria-current="page" href="/usuario/usuario-intercambios" th:if="${session.usuariosession != null}" >Intercambios</a></h5>
+			        </div>
+			    </div>
+			  </div>
+        </section>
+        <footer th:replace="/fragments/footer :: footer"></footer>
+    </body>
+</html>

@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html lang="es-AR" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/extras/spring-security">   
+    <head th:replace="/fragments/head :: head"></head>
+    <body style="position:relative; padding-bottom: 10em; min-height:100vh">
+    	<nav th:replace="/fragments/navbar :: nav"></nav>
+    	<header>
+            <h1 style="margin-top: 80px; text-align: center;; font-size: 45px; color: #36220b;">Solicitar Libro</h1>
+        </header>
+               
+    	<div class="row" id="form-sigin" style="height: 55px;margin-top: 85px;margin-left: 500px; max-width: 850px;">
+			<div class="col-md-6" id="form-1">
+            
+				            
+		           
+		            	<label class="form-label"></label>
+		            
+		            	<p th:if="${error != null}" th:text="${error}" style="color:red"></p>
+		            	
+		            	<input type="hidden" name="id" th:value="${libro.id}">
+		            	
+		            	<input disabled class="form-control casilleros" type="text" placeholder="Titulo" name="titulo" th:value="${libro.titulo}" required >
+		            	<label class="form-label"></label>
+		
+						<input disabled class="form-control casilleros" type="text" placeholder="Autor" name="autor" th:value=" ${libro.autor}" required >
+		                <label class="form-label"></label>
+		                        
+		                <input disabled class="form-control casilleros" type="text" placeholder="Año" name="anio" th:value="${libro.anio}" required >
+		                <label class="form-label"></label>
+		                        
+		                <input disabled class="form-control casilleros" type="text" placeholder="Descripcion" name="descripcion" th:value="${libro.descripcion}" >
+		                <label class="form-label"></label>
+		                
+		                <label class="form-control casilleros" style=" background-color: #ced4da;" th:if="${libro.disponible != null}" th:text="${'Disponible'}" >
+		                <input disabled type="checkbox" name="disponible" th:checked="${disponible}" class="align-middle" style="margin-left:8px;">    </label>
+                		             
+               	
+			</div>
+     
+
+			<div class="col-md-6" id="form-2" style="margin-top: 30px;">
+				<!--<h4 style="text-align: center;font-family: Roboto, sans-serif; font-weight: bold;height: 35px;margin-left: 35px">Ingresa una foto</h4>-->
+					<div id="image-form" style="margin-left: 135px;width: 244px;">
+						<img src="" style="text-align: right;width: 205px;height: 154.422px;">
+						
+							</div>
+								<input type="file" name="archivo" id="agregar-foto" style="margin-top: 19px;width: 246px;margin-left: 107px;font-family: Roboto, sans-serif;">
+											        <p style="text-align: center; margin-top:30px"><a th:href= "@{../../../intercambio/intercambio-solicitar(idLibro2=__${libro.id}__)}" style="text-decoration: none;
+			        	padding: 4px; border-radius: 0.5em; padding-left: 13px; padding-right:13px; background-color: #35978f; border-color: #01665e;
+			        	max-width: 350px; color: white;">Solicitar</a>
+			        </p>
+							</div>
+					</div>
+				
+			<footer th:replace="/fragments/footer :: footer"></footer>
+    </body>
+</html>
+
+<!--<!DOCTYPE html>
+<html lang="es-AR" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/extras/spring-security">   
+    <head th:replace="/fragments/head :: head"></head>
+    <body>                
+        <nav th:replace="/fragments/navbar :: nav"></nav>
+        <header>
+            <h1>Deshabilitar Libro</h1>
+        </header>
+        <section>            
+        	<form action="/libro/libro-deshabilitar" method="POST" enctype="multipart/form-data">             
+            	<p th:if="${error != null}" th:text="${error}" style="color:red"></p>    
+
+				<input type="hidden" name="id" th:value="${libro.id}">
+               
+                <label>Titulo</label>
+                <p th:text="${libro.titulo}"></p>
+                <br>   
+                <label>Autor</label>
+                <p th:text="${libro.autor}"></p>
+				<br>  
+               	<label>Año</label>
+                <p th:text="${libro.anio}"></p>
+                <br>                 
+                <label>Descripción</label>
+                <p th:text="${libro.descripcion}"></p>
+                <br>
+                <button type="submit">Eliminar</button> 
+            </form>
+        </section>
+        <footer th:replace="/fragments/footer :: footer"></footer>
+    </body>
+</html>-->

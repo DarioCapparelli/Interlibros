@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es-AR" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/extras/spring-security">   
+    <head th:replace="/fragments/head :: head"></head>
+    <body style="position:relative; padding-bottom: 10em; min-height:100vh">
+    	<nav th:replace="/fragments/navbar :: nav"></nav>
+    	<header>
+            <h1 style="margin-top: 4%; text-align: center; font-size: 350%; color: #36220b;">Edición de libro</h1>
+        </header>
+               
+    	<div class="row" id="form-sigin" style="padding: 2.2%;margin-right: 30%; margin-left: 30%; margin-top: 3%; margin-bottom: 3%; border-color: #d6b575;border-style: solid; border-radius: 30px;">
+			<div class="col-md-6" id="form-1">
+            
+				<form action="/libro/libro-editar" method="POST" enctype="multipart/form-data" >
+		           
+		            	<label class="form-label"></label>
+		            
+		            	<p th:if="${error != null}" th:text="${error}" style="color:red"></p>
+		            	
+		            	<input type="hidden" name="idLibro" th:value="${libro.id}">
+            			<input type="hidden" name="idUsuario" th:value="${libro.usuario.id}">
+		            	
+		            	<input class="form-control casilleros" type="text" placeholder="Titulo" name="titulo" th:value="${libro.titulo}" required>
+		            	<label class="form-label"></label>
+		
+						<input class="form-control casilleros" type="text" placeholder="Autor" name="autor" th:value=" ${libro.autor}" required>
+		                <label class="form-label"></label>
+		                        
+		                <input class="form-control casilleros" type="text" placeholder="Año" name="anio" th:value="${libro.anio}" required>
+		                <label class="form-label"></label>
+		                        
+		                <input class="form-control casilleros" type="text" placeholder="Descripcion" name="descripcion" th:value="${libro.descripcion}">
+		                <label class="form-label"></label>
+		                
+		                <label class="form-control casilleros">Disponible<input type="checkbox" name="disponible" th:checked="${disponible}" class="align-middle" style="margin-left:8px;">    </label>
+                		             
+               	
+			</div>
+     
+
+						<div class="col-md-6" id="form-2" style="margin-top: 0px;">
+					<div id="image-form" style="margin-left: 115px;width: 244px;">
+						<img th:if="${libro.foto == null}" src="../img/libro-icono.png" style="text-align: right;width: 205px;height: 284.422px; border-radius: 20px;">
+			      		<img th:if="${libro.foto != null}" th:src="${'/foto/libro/' + libro.id}" style="text-align: right;width: 205px;height: 284.422px; border-radius: 20px;">
+					</div>
+					<input type="file" name="archivo" id="agregar-foto" style="margin-top: 19px;width: 246px;margin-left: 87px;font-family: Roboto, sans-serif;" th:value="${libro.foto}">
+					<button class="btn btn-lg text-center" id="boton-registro" type="submit" style="margin-top: 29px;font-family: Roboto, sans-serif;font-weight: bold;text-align: center;width: 182.328px;margin-left: 126px; background-color: #b8884e; border-color: #986931; max-width: 350px; color: white">Registrar Libro</button>
+			</div>
+			</div>
+			</form>
+		<footer th:replace="/fragments/footer :: footer"></footer>
+    </body>
+</html>

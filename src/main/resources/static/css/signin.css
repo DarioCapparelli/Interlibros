@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto:wght@300;400;700&display=swap");
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+nav {
+  background-color: #758e4f;
+}
+
+#form-sigin {
+  border: solid 3px #758e4f;
+  border-radius: 30px;
+}
+
+#boton-registro {
+  margin-top: 10px;
+  background-color: #000000;
+  color: #ffffff;
+  width: 60%;
+  padding: 10px 0px;
+  border-radius: 24px;
+  font-weight: bold;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+}
+
+#boton-registro:hover {
+  background-color: #758e4f;
+  color: #000000;
+}
+
+#footer {
+  background-color: #758e4f;
+  color: #000000;
+}
+
+#agregar-foto {
+  font-size: 12px;
+}
+
+#seleccion-zona {
+  font-size: 10px;
+}
+
+.casilleros {
+  background-color: #c4c4c4;
+}
+
+input::placeholder {
+  background-color: #c4c4c4;
+  color: #000000;
+  font-size: 12px;
+}

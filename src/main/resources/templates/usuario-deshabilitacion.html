@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es-AR" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/extras/spring-security">   
+    <head th:replace="/fragments/head :: head"></head>
+    <body style="position:relative; padding-bottom: 10em; min-height:100vh">      
+    	<nav th:replace="/fragments/navbar :: nav"></nav>
+        <header>
+            <h1>Deshabilitar usuario</h1>
+        </header>
+        <section>
+            <h1>Deshabilitar usuario</h1>
+                <form action="/usuario/usuario-deshabilitar" method="POST" enctype="multipart/form-data">            
+            	<p th:if="${error != null}" th:text="${error}" style="color:red"></p>
+                <label>ID</label>
+                <input type="text" class="form-control" name="idUsuario" th:value="${idUsuario}"> <br>
+                <button type="submit">Eliminar</button>                
+            </form>
+        </section>
+        <footer th:replace="/fragments/footer :: footer"></footer>
+    </body>
+</html>

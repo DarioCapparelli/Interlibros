@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es-AR" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/extras/spring-security">   
+    <head th:replace="/fragments/head :: head"></head>
+    <body style="position:relative; padding-bottom: 10em; min-height:100vh">
+    	<nav th:replace="/fragments/navbar :: nav"></nav>
+    	<header>
+            <h1 style="margin-top: 4%; text-align: center; font-size: 350%; color: #36220b;">Registro de usuario</h1>
+        </header>
+               
+    	<div class="row" id="form-sigin" style="padding: 2.2%;margin-right: 30%; margin-left: 30%; margin-top: 3%; margin-bottom: 3%; border-color: #d6b575;border-style: solid; border-radius: 30px;">
+			
+			<div class="col-md-6" id="form-1">
+            
+				<form action="/registrar" method="POST" enctype="multipart/form-data" >
+		           
+		            	<label class="form-label"></label>
+		            
+		            	<p th:if="${error != null}" th:text="${error}" style="color:red"></p>
+		            	
+		            	<input class="form-control casilleros" type="text" placeholder="Nombre" name="nombre" th:value="${nombre}" required>
+		            	<label class="form-label"></label>
+		
+						<input class="form-control casilleros" type="text" placeholder="Apellido" name="apellido" th:value=" ${apellido}" required>
+		                <label class="form-label"></label>
+		                        
+		                <input class="form-control casilleros" type="email" placeholder="Email" name="mail" th:value="${mail}" required>
+		                <label class="form-label"></label>
+		                        
+		                <input class="form-control casilleros" type="password" placeholder="Contraseña" name="clave1">
+		                <label class="form-label"></label>
+		                        
+		                <input class="form-control casilleros" type="password" placeholder="Repetir contraseña" name="clave2">
+		                <label class="form-label"></label>                 
+               	
+			</div>
+     
+
+			<div class="col-md-6" id="form-2" style="margin-top: 25px;">
+					<div id="image-form" style="margin-left: 115px;width: 244px;">
+						<img src="img/lector-1.png" style="text-align: right;width: 195px;height: 164.422px;">
+						
+							</div>
+								<input type="file" name="archivo" id="agregar-foto" style="margin-top: 19px;width: 246px;margin-left: 87px;font-family: Roboto, sans-serif;">
+								<button class="btn btn-lg text-center" id="boton-registro" type="submit" style="margin-top: 29px;font-family: Roboto, sans-serif;font-weight: bold;text-align: center;width: 182.328px;margin-left: 126px; background-color: #b8884e; border-color: #986931; max-width: 350px; color: white">Registrarse</button>
+							</div>
+					</div>
+				</form>
+			<footer th:replace="/fragments/footer :: footer"></footer>
+    </body>
+</html>

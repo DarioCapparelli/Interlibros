@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es-AR" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/extras/spring-security">   
+    <head th:replace="/fragments/head :: head"></head>
+    <body style="position:relative; padding-bottom: 10em; min-height:100vh">  
+        <nav th:replace="/fragments/navbar :: nav"></nav>
+        <header>
+            <h1 style="text-align: center; margin: 50px; font-size: 60px">Navegador</h1>
+            <!--<h2 style="text-align: center; margin: 40px; font-size: 20px;"><a href="#" style="text-decoration: none; margin-left: 20px; margin-right: 30px; color:black;">Libros</a><a href="#" style="text-decoration: none; margin-left: 20px; margin-right: 20px;  color:black;">Bibliotecas</a></h2>-->
+        </header>
+        <section> 
+        <div style="align-content: center; width: 40%; margin-left: auto; margin-right: auto;">
+			<form class="d-flex" action="/buscarLibro" method="POST" enctype="multipart/form-data">
+        		<input class="form-control me-2 " type="search" placeholder="Buscar Libro" name="busqueda" aria-label="Search">
+        		<button class="btn btn-outline-light" type="submit" style="background-color: #ad6a34;">Buscar</button>
+      		</form>
+      	</div>
+			<div class="row row-cols-1 row-cols-md-5 g-4" Style="margin-left: 150px; margin-right: 150px; margin-top: 5%;">
+				<div class="col" th:each="libro : ${libros}">
+					<div class="card">
+						<div style="max-width: 200px; max-height: 200px; margin-left: auto; margin-right: auto;">
+							<img th:if="${libro.foto == null}" src="../img/libro-icono.png" class="card-img-top" alt="..." style="padding: 0; box-align: center;">
+							<img th:if="${libro.foto != null}" th:src="${'/foto/libro/' + libro.id}" class="card-img-top" alt="..." style="padding: 35px;">
+						</div>
+			      		<div class="card-body" style="margin-top: 20%; min-height: 225px">
+				        	<h5 class="card-title" th:text="${libro.titulo}"></h5>
+				        	<p class="card-text" th:text="${libro.autor} + '. ' + ${libro.anio}"></p>
+				        	<p th:text="${libro.descripcion}" style=" min-height: 60px">
+			       	 	<div>
+				        <p th:if="${libro.disponible}"style="text-align: center; margin-top:30px">
+				        	<a th:href= "@{../../../intercambio/intercambio-solicitar(idLibro2=__${libro.id}__)}" style="text-decoration: none;
+				        	padding: 4px; border-radius: 0.5em; padding-left: 13px; padding-right:13px; background-color: #35978f; border-color: #01665e;
+				        	max-width: 350px; color: white;">Solicitar</a>			 
+				        </p>
+				        <p th:unless="${libro.disponible}"style="text-align: center; margin-top:30px">
+				        	<a style="text-decoration: none;
+				        	padding: 4px; border-radius: 0.5em; padding-left: 13px; padding-right:13px; background-color: #5e1916; border-color: #01665e;
+				        	max-width: 350px; color: white;">No disponible</a>			 
+				        </p>
+			        	</div>       
+			     	</div>
+			    </div>
+			</div>		  
+        </section>
+        <label  style="margin-top: 10%; margin-right: 20px"></label>
+        <footer th:replace="/fragments/footer :: footer"></footer>
+	</body>
+</html> 
